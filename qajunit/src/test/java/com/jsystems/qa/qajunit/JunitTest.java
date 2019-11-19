@@ -86,6 +86,23 @@ public class JunitTest extends ConfigJunit {
 
     }
 
+    // Zadanie 1
+    @Test
+    public void zad1(){
+
+        String resultString = "Wordpress powers 34% of the internet";
+        String expectedString = "Wordpress powers [number]% of the internet";
+
+        assertTrue(resultString.startsWith("Wordpress powers "));
+        assertTrue(resultString.endsWith("% of the internet"));
+        assertThat(resultString).matches("(Wordpress powers )\\d+(% of the internet)"); //d+ oznacza ze wartosci numersyczne i bedzie wiecej niz 1
+
+        String result = resultString.replace("Wordpress powers ", "").replace("% of the internet", "");
+        int resultNumber = Integer.parseInt(result);
+        assertTrue(resultNumber > 0);
+
+    }
+
 
     // zagniedzone suity (sjute)
     @Nested
