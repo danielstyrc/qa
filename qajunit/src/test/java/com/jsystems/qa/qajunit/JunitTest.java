@@ -67,6 +67,26 @@ public class JunitTest extends ConfigJunit {
 
     }
 
+    @Test
+    public void stringTest(){
+
+        String simpleString = "simpleString";
+        String simple = "simpleString";
+        String simpleString_2 = new String("simpleString");
+        String simpleString_3 = new String("simpleString");
+
+        assertTrue(simpleString == "simpleString");
+        assertTrue(simpleString == simple);
+        assertFalse(simpleString == simpleString_2);
+        assertFalse(simpleString_2 == simpleString_3);
+        assertTrue(simpleString.equals(simple));
+        assertTrue(simpleString_2.equals(simpleString_3));
+        int a = 1;
+        Integer a_1 = 1;
+
+    }
+
+
     // zagniedzone suity (sjute)
     @Nested
     public class NestedTest {
