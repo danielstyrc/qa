@@ -17,6 +17,8 @@
         <jdk.version>1.8</jdk.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <tags>UnitTest,ApiTest</tags>
+        <junit.jupiter.api>5.5.2</junit.jupiter.api>
     </properties>
 
     <dependencyManagement>
@@ -79,6 +81,9 @@
                     </dependency>
                 </dependencies>
                 <configuration>
+                    <propertis>
+                        <includeTags>${tags}</includeTags>
+                    </propertis>
                     <includes>
                         <include>**/*Test.java</include>
                     </includes>

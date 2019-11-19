@@ -12,7 +12,31 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @DisplayName("Junit tests")
 @Tag("unit") //otagowanie testu
-public class JunitTest {
+public class JunitTest extends ConfigJunit {
+
+// All monza wyciagnac poza klase jako extends bo sie powtarza, Each pozostaje tutaj
+//    @BeforeAll
+//    public static void setupAll() {
+//        System.out.println("======================BeforeAll======================");
+//    }
+
+    @BeforeEach
+    public void setupEach(TestInfo testInfo) {
+        System.out.println("======================BeforeEach======================");
+        System.out.println(testInfo.getDisplayName());
+        System.out.println(testInfo.getTags());
+        System.out.println(testInfo.getTestMethod());
+    }
+
+//    @AfterAll
+//    public static void tearDownAll() {
+//        System.out.println("======================AfterAll======================");
+//    }
+
+    @AfterEach
+    public void tearDownEach() {
+        System.out.println("======================AfterEach======================");
+    }
 
     final String stringTestowy = "stringTestowy";
 
