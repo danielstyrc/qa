@@ -14,11 +14,11 @@ public class MainWordpressPage extends BasePage {
     }
 
     @FindBy(css = "h1.lpc-headline-title span:nth-child(1)")
-    public WebElement getTextElement_1;
+    public WebElement textElement_1;
 //    public WebElement textElement_1 = driver.findElement(By.cssSelector("h1.lpc-headline-title span:nth-child(1)"));
 
     @FindBy(css = "h1.lpc-headline-title span:nth-child(2)")
-    public WebElement getTextElement_2;
+    public WebElement textElement_2;
 //    public WebElement textElement_2 = driver.findElement(By.cssSelector("h1.lpc-headline-title span:nth-child(2)"));
 
 
