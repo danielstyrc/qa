@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <properties>
-        <tags>UnitTest</tags>
+        <tags>FrontTest</tags>
     </properties>
 
     <artifactId>qajunit</artifactId>
