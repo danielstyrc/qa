@@ -1,5 +1,6 @@
 package com.jsystems.qa.qagui;
 
+import com.jsystems.qa.qagui.page.MainWordpressPage;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -19,12 +20,13 @@ public class FrontendTest extends ConfigFrontend {
 
         driver.get(Configuration.BASE_URL);
 
-        WebElement textElement_1 = driver.findElement(By.cssSelector("h1.lpc-headline-title span:nth-child(1)"));
-        String text1 = textElement_1.getText();
+//        WebElement textElement_1 = driver.findElement(By.cssSelector("h1.lpc-headline-title span:nth-child(1)"));
+        MainWordpressPage mainWordpressPage = new MainWordpressPage(driver);
+        String text1 = mainWordpressPage.textElement_1.getText();
         assertTrue(text1.equals("WordPress powers"));
 
-        WebElement textElement_2 = driver.findElement(By.cssSelector("h1.lpc-headline-title span:nth-child(2)"));
-        String text2 = textElement_2.getText();
+//        WebElement textElement_2 = driver.findElement(By.cssSelector("h1.lpc-headline-title span:nth-child(2)"));
+        String text2 = mainWordpressPage.textElement_2.getText();
         assertTrue(text2.contains("% of the internet."));
         assertThat(text2).matches("\\d+(% of the internet.)");
     }
