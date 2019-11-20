@@ -40,7 +40,13 @@ public class ConfigFrontend {
         setupSystemProperties();
 
 //        driver = new FirefoxDriver();
-        driver = new ChromeDriver();
+//        driver = new ChromeDriver();
+
+        if(Configuration.BROWSER.equals("chrome")) {
+            driver = new ChromeDriver();
+        } else {
+            driver = new FirefoxDriver();
+        }
 
         setupDriver();
     }
