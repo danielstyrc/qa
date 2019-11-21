@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
         glue = "classpath:com.jsystems.qa.qagui.cucumber",
         plugin = {"html:target/cucumber-html-report", "rerun:target/target.txt"},
         tags = {
-                "@wordpress"
+                "@wordpress" //,
 //                "@login",
 //                "@userprofile"
         }
