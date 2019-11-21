@@ -1,4 +1,4 @@
-package com.jsystems.qa.qagui.page;
+package com.jsystems.qa.qagui.cucumber.page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -51,3 +51,4 @@ public class BasePage {
         waitForElementToBeVisibility(by, 30);
     }
 }
+
