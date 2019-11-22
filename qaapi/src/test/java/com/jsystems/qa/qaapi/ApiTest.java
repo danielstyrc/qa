@@ -1,11 +1,14 @@
 package com.jsystems.qa.qaapi;
 
+import com.jsystems.qa.qaapi.database.UserDao;
 import com.jsystems.qa.qaapi.model.azure.book.Book;
 import com.jsystems.qa.qaapi.model.device.User;
 import com.jsystems.qa.qaapi.model.azure.author.AzureAuthor;
+import com.jsystems.qa.qaapi.model.user.UserDb;
 import com.jsystems.qa.qaapi.service.azure.BookService;
 import com.jsystems.qa.qaapi.service.user.UserService;
 import io.restassured.RestAssured;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -87,6 +90,36 @@ public class ApiTest {
     public void postBookTest() {
         Book book = new Book(1, "Jsystems", "Szkolenia", 382, "en", "2019-11-21T13:22:17.872Z");
         BookService.postBook(book, 200);
+    }
+
+    @Test
+//    @Disabled
+    public void dbTest() {
+        UserDb userDb = UserDao.getOneById(1L);
+        assertThat(userDb.getName()).isEqualTo("Piotr");
+    }
+
+
+    @Test
+    public void getAllUser() {
+        List<UserDb> userDbs = UserDao.getAllUsers();
+        System.out.println(userDbs);
+        assertTrue(userDbs.size() > 0);
+
+    }
+
+    @Test
+    public void saveUserDb() {
+        UserDb userDb = new UserDb(5L, "Arnold", "Kowalski");
+        UserDao.saveUser(userDb);
+
+        UserDb userdb_1 = UserDao.getOneById(5L);
+        assertTrue(userdb_1.getId().equals(userDb.getId()));
+        assertTrue(userdb_1.getName().equals(userDb.getName()));
+        assertTrue(userdb_1.getSurname().equals(userDb.getSurname()));
+
+        UserDao.deleteUser(userdb_1.getId());
+
     }
 
 
