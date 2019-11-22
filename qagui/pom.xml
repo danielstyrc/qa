@@ -12,7 +12,9 @@
     <artifactId>qagui</artifactId>
 
     <properties>
-        <tags>FrontTest</tags>
+<!--        <tags>FrontTest</tags>-->
+        <tags></tags>
+        <exTags></exTags>
     </properties>
 
     <dependencies>

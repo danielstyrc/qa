@@ -1,6 +1,7 @@
 package com.jsystems.qa.qaapi;
 
 import com.jsystems.qa.qaapi.model.User;
+import com.jsystems.qa.qaapi.model.azure.AzureAuthor;
 import com.jsystems.qa.qaapi.service.UserService;
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.DisplayName;
@@ -9,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static com.google.common.truth.Truth.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -59,6 +61,14 @@ public class ApiTest {
         assertTrue(users.get(0).device.get(0).deviceModel.get(0).screenSize == 17);
         assertTrue(users.size() > 0);
 
+    }
+
+    @Test
+    @DisplayName("Get azure authors")
+    public void shouldReturnsAllAzureAuthorsList() {
+        List<AzureAuthor> azureAuthor = UserService.getAzureAuthors();
+
+        assertThat(azureAuthor.size()).isGreaterThan(0);
     }
 
 }
