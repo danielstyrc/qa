@@ -1,8 +1,10 @@
 package com.jsystems.qa.qaapi;
 
-import com.jsystems.qa.qaapi.model.User;
-import com.jsystems.qa.qaapi.model.azure.AzureAuthor;
-import com.jsystems.qa.qaapi.service.UserService;
+import com.jsystems.qa.qaapi.model.azure.book.Book;
+import com.jsystems.qa.qaapi.model.device.User;
+import com.jsystems.qa.qaapi.model.azure.author.AzureAuthor;
+import com.jsystems.qa.qaapi.service.azure.BookService;
+import com.jsystems.qa.qaapi.service.user.UserService;
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -13,6 +15,7 @@ import java.util.List;
 import static com.google.common.truth.Truth.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Tag("ApiTest")
@@ -66,9 +69,27 @@ public class ApiTest {
     @Test
     @DisplayName("Get azure authors")
     public void shouldReturnsAllAzureAuthorsList() {
-        List<AzureAuthor> azureAuthor = UserService.getAzureAuthors();
+        List<AzureAuthor> azureAuthors = UserService.getAzureAuthors();
 
-        assertThat(azureAuthor.size()).isGreaterThan(0);
+        assertThat(azureAuthors.size()).isGreaterThan(0);
+
+        for (AzureAuthor azureAuthor : azureAuthors) {
+            int firstNameId = Integer.parseInt(azureAuthor.firstName.replace("First Name ", ""));
+            assertThat(azureAuthor.firstName).contains("First Name ");
+            assertThat(azureAuthor.firstName).matches("First Name \\d*");
+            assertTrue(azureAuthor.id == firstNameId);
+        }
+
     }
+
+    @Test
+    @DisplayName("Post Book test")
+    public void postBookTest() {
+        Book book = new Book(1, "Jsystems", "Szkolenia", 382, "en", "2019-11-21T13:22:17.872Z");
+        BookService.postBook(book, 200);
+    }
+
+
+
 
 }
